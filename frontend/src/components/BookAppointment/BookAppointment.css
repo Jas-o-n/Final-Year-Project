@@ -1,0 +1,24 @@
+.book-appointment{
+    margin: auto auto;
+    margin-top: 100px;
+    font-size: max(2vw,20px);
+    text-align: center;
+    font-weight: 500;
+}
+
+.book-appointment button{
+    background: transparent;
+    font-size: 20px;
+    color: #49557e;
+    border: 1px solid rgb(250, 47, 11);
+    margin-top: 40px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-appointment button:hover{
+    background-color: #fff4f2;
+    transform: scale(1.05);
+}
