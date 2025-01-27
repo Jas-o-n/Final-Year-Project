@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import './Add.css'
+import './AddProducts.css'
 import axios from "axios"
 import { toast } from 'react-toastify';
 
-const Add = ({url}) => {
+const AddProducts = ({url}) => {
 
     const [data,setData] = useState({
       name:"",
@@ -64,4 +64,4 @@ const Add = ({url}) => {
   )
 }
 
-export default Add
+export default AddProducts

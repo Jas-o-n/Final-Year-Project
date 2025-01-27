@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import './List.css'
+import './ListProducts.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const List = ({url}) => {
+const ListProducts = ({url}) => {
 
     const [list,setList] = useState([]);
 
@@ -34,14 +34,14 @@ const List = ({url}) => {
     <div className='list add flex-col'>
       <p>All Products List</p>
       <div className="list-table">
-        <div className="list-table-format title">
+        <div className="list-products-table-format title">
           <b>Name</b>
           <b>Category</b>
           <b>Action</b>
         </div>
         {list.map((item,index)=>{
           return (
-            <div key={index} className='list-table-format'>
+            <div key={index} className='list-products-table-format'>
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p onClick={()=>removeProduct(item._id)} className='cursor'>X</p>
@@ -53,4 +53,4 @@ const List = ({url}) => {
   )
 }
 
-export default List
+export default ListProducts

@@ -30,7 +30,7 @@ const Navbar = ({setShowLogin}) => {
       <div className="navbar-right">
         {!token?<button onClick={()=>setShowLogin(true)}>sign in / register</button>
         :<div className='navbar-profile'>
-           <img src={assets.user_icon} alt="" />
+           <img src={assets.profile_icon} alt="" />
            <ul className="navbar-profile-dropdown">
             <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
            </ul>

@@ -1,7 +1,7 @@
 import logo from './logo.png'
 import cross_icon from './cross_icon.png'
-import user_icon from './user_icon.jpg'
-import logout_icon from './logout_icon.jpg'
+import profile_icon from './profile_icon.png'
+import logout_icon from './logout_icon.png'
 
 import category_car from './category_car.png'
 import category_income from './category_income.png'
@@ -16,7 +16,7 @@ import category_sport from './category_sport.png'
 export const assets = {
     logo,
     cross_icon,
-    user_icon,
+    profile_icon,
     logout_icon
 }
 

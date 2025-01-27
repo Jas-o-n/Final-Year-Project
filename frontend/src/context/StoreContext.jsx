@@ -6,6 +6,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const url = import.meta.env.VITE_API_URL
+    const adminUrl = import.meta.env.VITE_ADMIN_URL
     const [token,setToken] = useState("")
     const [product_list,setProductList] = useState([])
 
@@ -28,7 +29,8 @@ const StoreContextProvider = (props) => {
         product_list,
         url,
         token,
-        setToken
+        setToken,
+        adminUrl
     }
     return (
         <StoreContext.Provider value={contextValue}>

@@ -7,8 +7,41 @@
 
 .navbar .logo {
     width: max(10%,80px);
-}
+} 
 
 .navbar .profile {
     width: 40px;
+}
+
+.navbar-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+
+.navbar-profile:hover .navbar-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #eff7ff;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid #3987c9;
+    list-style: none;
+}
+
+.navbar-profile-dropdown li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navbar-profile img{
+    width: 20px;
+}
+
+.navbar-profile-dropdown li:hover{
+    color: #3987c9;
 }
