@@ -11,12 +11,22 @@ import 'dotenv/config'
 
 // app config
 const app = express()
-const port = 4000
+const port = 4000 || process.env.PORT
 
 
 
 // middleware
-app.use(cors());
+const allowedOrigins = [
+    "http://localhost:5173", // dev admin frontend
+    "http://localhost:5174", // dev frontend
+    "", // admin frontend
+    "", // frontend
+]
+
+app.use(cors({
+    origin: allowedOrigins
+}));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 
