@@ -19,8 +19,8 @@ const port = 4000 || process.env.PORT
 const allowedOrigins = [
     "http://localhost:5173", // dev admin frontend
     "http://localhost:5174", // dev frontend
-    "", // admin frontend
-    "", // frontend
+    "https://ibmsadminfyp.netlify.app", // admin frontend
+    "https://ibmsfyp.netlify.app", // frontend
 ]
 
 app.use(cors({
