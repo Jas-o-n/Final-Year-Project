@@ -1,5 +1,7 @@
 import logo from './logo.png'
 import cross_icon from './cross_icon.png'
+import user_icon from './user_icon.jpg'
+import logout_icon from './logout_icon.jpg'
 
 import category_car from './category_car.png'
 import category_income from './category_income.png'
@@ -14,6 +16,8 @@ import category_sport from './category_sport.png'
 export const assets = {
     logo,
     cross_icon,
+    user_icon,
+    logout_icon
 }
 
 export const category_list = [
@@ -55,55 +59,3 @@ export const category_list = [
     },
 ]
 
-export const product_list = [
-    {
-        _id: "1",
-        name: "General motor insurance",
-        category: "Vehicle"
-    },
-    {
-        _id: "2",
-        name: "Young driver (up to 24 years old)",
-        category: "Vehicle"
-    },
-    {
-        _id: "3",
-        name: "Older drivers (76 - 85 years old)",
-        category: "Vehicle"
-    },
-    {
-        _id: "4",
-        name: "Older drivers (85 years old+)",
-        category: "Vehicle"
-    },
-    {
-        _id: "5",
-        name: "Temporary cover",
-        category: "Vehicle"
-    },
-    {
-        _id: "6",
-        name: "Motortrade",
-        category: "Vehicle"
-    },
-    {
-        _id: "7",
-        name: "Commercial vehicles",
-        category: "Vehicle"
-    },
-    {
-        _id: "8",
-        name: "Motorhomes",
-        category: "Vehicle"
-    },
-    {
-        _id: "9",
-        name: "Motorbike",
-        category: "Vehicle"
-    },
-    {
-        _id: "10",
-        name: "Classic motorbike",
-        category: "Vehicle"
-    },
-]

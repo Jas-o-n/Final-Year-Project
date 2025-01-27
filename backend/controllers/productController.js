@@ -2,9 +2,6 @@ import productModel from "../models/productModel.js"
 
 // add product
 const addProduct = async (req,res) => {
-
-    console.log(req.body);
-
     const product = new productModel({
         name:req.body.name,
         category:req.body.category
@@ -19,7 +16,6 @@ const addProduct = async (req,res) => {
 }
 
 // remove product
-
 const removeProduct = async (req,res) => {
     try {
         const product = await productModel.findById(req.body.id);

@@ -1,8 +1,10 @@
 import express from "express"
 import cors from "cors"
+import bodyParser from "body-parser"
 import { connectDB } from "./config/db.js"
 import productRouter from "./routes/productRoute.js"
-import bodyParser from "body-parser"
+import userRouter from "./routes/userRoute.js"
+import 'dotenv/config'
 
 
 
@@ -23,6 +25,7 @@ connectDB();
 
 // api endpoints
 app.use("/api/product",productRouter)
+app.use("/api/user",userRouter)
 
 app.get("/",(req,res)=>{
     res.send("API Working")

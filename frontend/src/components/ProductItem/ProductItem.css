@@ -6,11 +6,11 @@
     transition: 0.3s;
     animation: fadeIn 1s;
     cursor: pointer;
-    border: 1px solid tomato;
+    border: 1px solid #3987c9;
 }
 
 .product-item:hover{
-    background-color: #fff4f2;
+    background-color: #eff7ff;
 }
 
 .product-item-info{

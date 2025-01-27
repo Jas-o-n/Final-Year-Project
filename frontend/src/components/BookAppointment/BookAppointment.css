@@ -10,7 +10,7 @@
     background: transparent;
     font-size: 20px;
     color: #49557e;
-    border: 1px solid rgb(250, 47, 11);
+    border: 1px solid #3987c9;
     margin-top: 40px;
     padding: 10px 30px;
     border-radius: 50px;
@@ -19,6 +19,6 @@
 }
 
 .book-appointment button:hover{
-    background-color: #fff4f2;
+    background-color: #eff7ff;
     transform: scale(1.05);
 }
