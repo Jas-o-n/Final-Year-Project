@@ -1,5 +1,8 @@
 TODO:
 
--[ ] Booking Appointments
--[ ] View product details
--[ ] Quotes
+-[] Booking Appointments
+    -[x] Frontend ie UI + logic for form submitting 
+    -[] Backend ie storing form data in database
+
+-[] View product details
+-[] Quotes

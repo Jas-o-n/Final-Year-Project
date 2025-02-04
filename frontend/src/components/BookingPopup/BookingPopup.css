@@ -1,4 +1,4 @@
-.login-popup{
+.booking-popup{
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -7,7 +7,7 @@
     display: grid;
 }
 
-.login-popup-container{
+.booking-popup-container{
     place-self: center;
     width: max(23vw,330px);
     color: #808080;
@@ -21,32 +21,32 @@
     animation: fadeIn 0.5s;
 }
 
-.login-popup-title{
+.booking-popup-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
 }
 
-.login-popup-title img{
+.booking-popup-title img{
     width: 16px;
     cursor: pointer;
 }
 
-.login-popup-inputs{
+.booking-popup-inputs{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-popup-inputs input{
+.booking-popup-inputs input{
     outline: none;
     border: 1px solid #c9c9c9;
     padding: 10px;
     border-radius: 4px;
 }
 
-.login-popup-container button{
+.booking-popup-container button{
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -56,19 +56,44 @@
     cursor: pointer;
 }
 
-.login-popup-condition {
+.booking-popup h3{
+    margin: auto;
+    color: black;
+}
+
+.booking-popup-slots-container-days{
     display: flex;
-    align-items: start;
-    gap: 8px;
-    margin-top: -15px;
+    gap: 3px;
+    margin-top: 4px;
 }
 
-.login-popup-condition input{
-    margin-top: 5px;
-}
-
-.login-popup p span{
+.booking-popup-slots-dates{
     color: #3987c9;
-    font-weight: 500;
     cursor: pointer;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin: auto;
+    flex-grow: 2;
+    text-align: center;
+}
+
+.booking-popup-slots-times{
+    color: #3987c9;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    font-size: small;
+}
+
+.booking-popup-slots-container-days .active{
+    background-color: #3987c9;
+    color: white;
+    border-radius: 8px;
+}
+
+.booking-popup-slots-container .active{
+    background-color: #3987c9;
+    color: white;
+    border-radius: 8px;
 }
