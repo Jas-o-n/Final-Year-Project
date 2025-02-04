@@ -38,8 +38,6 @@ const LoginPopup = ({setShowLogin}) => {
         if (response.data.isAdmin) {
           let newAdminUrl = adminUrl
           
-          console.log("Redirecting to:", newAdminUrl);
-          
           window.location.href = newAdminUrl
         } else{
           setToken(response.data.token)
