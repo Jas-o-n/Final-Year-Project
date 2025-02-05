@@ -6,11 +6,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const BookingPopup = ({setShowBooking}) => {
-
-  const daysOfWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-  const {token,url} = useContext(StoreContext)
-
+function useBookings() {
   const [bookingSlots,setBookingSlots] = useState([])
   const [slotIndex,setSlotIndex] = useState(0)
   const [slotTime,setSlotTime] = useState(0)
@@ -62,6 +58,16 @@ const BookingPopup = ({setShowBooking}) => {
       setBookingSlots(prev => ([...prev, timeSlots]))
     }
   }
+  
+  return {bookingSlots,setBookingSlots,getAvailableSlots,slotIndex,setSlotIndex,slotTime,setSlotTime}
+}
+
+const BookingPopup = ({setShowBooking}) => {
+
+  const daysOfWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+  const {token,url} = useContext(StoreContext)
+
+  const {bookingSlots,slotIndex,slotTime,getAvailableSlots,setSlotIndex,setSlotTime} = useBookings()
 
   useEffect(()=>{
     getAvailableSlots()
