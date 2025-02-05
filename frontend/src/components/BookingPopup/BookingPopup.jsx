@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
 import './BookingPopup.css'
 import { assets } from '../../assets/assets'
+import { getUserID } from '../../utils/authUtils';
+import { StoreContext } from '../../context/StoreContext';
+import React, { useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const BookingPopup = ({setShowBooking}) => {
 
   const daysOfWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+  const {token,url} = useContext(StoreContext)
 
   const [bookingSlots,setBookingSlots] = useState([])
   const [slotIndex,setSlotIndex] = useState(0)
   const [slotTime,setSlotTime] = useState(0)
 
-  const [data,setData] = useState({
-    name:"",
-    email:"",
-    password:""
-  })
-
   const getAvailableSlots = async () => {
+    if (bookingSlots.length > 0) return;
     // get current date
     let today = new Date()
 
@@ -67,24 +67,27 @@ const BookingPopup = ({setShowBooking}) => {
     getAvailableSlots()
   },[])
 
-  useEffect(()=>{
-    setSlotTime(0)
-  },[slotIndex])
-  
-  const onChangeHandler = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    setData(data=>({...data,[name]:value}))
-  }
-
   const onBooking = async (event) => {
-    event.preventDefault()
-    setShowBooking(false)
-
+    event.preventDefault();
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
 
-    console.log(data);
+    const selectedDate = formData.get('selectedDate');
+    const selectedTime = formData.get('selectedTime');
+    const userID = formData.get('userID');
+
+    const data = {
+      userID: userID,
+      date: selectedDate,
+      time: selectedTime
+    };
+
+    const response = await axios.post(`${url}/api/booking/add`,data);
+    if (response.data.success) {
+      toast.success(response.data.message);
+      setShowBooking(false)
+    } else {
+      toast.error(response.data.message);
+    }
   }
 
   const formatDate = (date) => {
@@ -92,19 +95,23 @@ const BookingPopup = ({setShowBooking}) => {
   };
 
   return (
-    <div className='booking-popup'>    
-      <form onSubmit={onBooking} className="booking-popup-container">
+    <div className='booking-popup'>  
+    {!token
+    ?<div className="booking-popup-container">
+      <div className="booking-popup-title">
+            <h2>Please log in to book an appointment!</h2>
+            <img onClick={()=>setShowBooking(false)} src={assets.cross_icon} alt="" />
+        </div>
+    </div>  
+      :<form onSubmit={onBooking} className="booking-popup-container">
         <div className="booking-popup-title">
             <h2>Book an Appointment</h2>
             <img onClick={()=>setShowBooking(false)} src={assets.cross_icon} alt="" />
         </div>
-        <div className="booking-popup-inputs">
-            <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your Email' required />
-        </div>
-        <h3>Booking Slots</h3>
+        
         <div className='booking-popup-slots-container-days'>
           {bookingSlots.length && bookingSlots.map((item,index)=>(
-            <div key={index} onClick={()=>setSlotIndex(index)} className={`booking-popup-slots-dates ${slotIndex===index?"active":""}`}>
+            <div key={index} onClick={()=>{setSlotIndex(index);setSlotTime(0)}} className={`booking-popup-slots-dates ${slotIndex===index?"active":""}`}>
               <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
               <p>{item[0] && item[0].datetime.getDate()}</p>
             </div>
@@ -118,14 +125,13 @@ const BookingPopup = ({setShowBooking}) => {
           ))}
         </div>{bookingSlots.length > 0 && (
           <>
-            <input type="hidden" name="selectedDay" value={formatDate(bookingSlots[slotIndex][0].datetime)} />
+            <input type="hidden" name="selectedDate" value={formatDate(bookingSlots[slotIndex][0].datetime)} />
             <input type="hidden" name="selectedTime" value={bookingSlots[slotIndex][slotTime].time} />
+            <input type="hidden" name="userID" value={getUserID()} />
           </>
         )}
         <button type='submit'>Book Appointment</button>
-      </form>
-
-
+      </form>}
     </div>
   )
 }

@@ -33,19 +33,6 @@
     cursor: pointer;
 }
 
-.booking-popup-inputs{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.booking-popup-inputs input{
-    outline: none;
-    border: 1px solid #c9c9c9;
-    padding: 10px;
-    border-radius: 4px;
-}
-
 .booking-popup-container button{
     border: none;
     padding: 10px;
@@ -54,11 +41,6 @@
     background-color: #3987c9;
     font-size: 15px;
     cursor: pointer;
-}
-
-.booking-popup h3{
-    margin: auto;
-    color: black;
 }
 
 .booking-popup-slots-container-days{
