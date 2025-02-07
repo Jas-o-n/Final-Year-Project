@@ -71,13 +71,11 @@
 
 .navbar-profile-dropdown li{
     display: flex;
+    font-size: 16px;
     align-items: center;
+    margin-bottom: 3px;
     gap: 10px;
     cursor: pointer;
-}
-
-.navbar-profile img{
-    width: 20px;
 }
 
 .navbar-profile-dropdown li:hover{

@@ -6,7 +6,8 @@ const addBooking = async (req,res) => {
         const booking = new bookingModel({
             userID: req.body.userID,
             date: new Date(req.body.date),
-            time: req.body.time
+            time: req.body.time,
+            status: 'pending'
         });
         await booking.save();
         res.json({success: true, message: "Booking Added"});
@@ -39,5 +40,34 @@ const listBooking = async (req,res) => {
     }
 }
 
+// get bookings by single userID
+const getBookingsByUserID = async (req, res) => {
+    try {
+        const userID = req.params.userID; // Get userID from URL parameter
+        const bookings = await bookingModel.find({ userID: userID });
+        res.json({ success: true, data: bookings });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+}
 
-export {addBooking,listBooking,removeBooking}
+// update booking status
+const updateBookingStatus = async (req,res) => {
+    try {
+        const booking = await bookingModel.findById(req.body.id);
+        await bookingModel.findByIdAndUpdate(req.body.id, { status: req.body.status });
+        res.json({success:true, message:`Booking ${req.body.status}`})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:"Error"})        
+    }
+}
+
+export {
+    addBooking, 
+    listBooking, 
+    removeBooking, 
+    updateBookingStatus, 
+    getBookingsByUserID
+}

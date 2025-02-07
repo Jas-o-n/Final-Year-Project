@@ -1,6 +1,6 @@
 .list-bookings-table-format{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0.1fr;
+    grid-template-columns: 1fr 1fr 1fr 0.7fr 0.1fr;
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
@@ -27,4 +27,17 @@
 
 .list-bookings-table-format.title{
     background-color: #f9f9f9;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.approve:hover {
+    color: #4CAF50;
+}
+
+.deny:hover, .remove:hover {
+    color: #f44336;
 }

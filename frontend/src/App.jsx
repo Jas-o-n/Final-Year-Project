@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
+import Bookings from './pages/Bookings/Bookings'
 import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import BookingPopup from './components/BookingPopup/BookingPopup'
@@ -32,6 +33,7 @@ const App = () => {
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           < Route path='/' element={<Home setShowBooking={setShowBooking} />} />
+          < Route path='/bookings' element={<Bookings />} />
         </Routes>
       </div>
       <Footer />

@@ -69,7 +69,9 @@ function useBookingSlots() {
 const BookingPopup = ({setShowBooking}) => {
 
   const daysOfWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-  const {token,url} = useContext(StoreContext)
+  const {url} = useContext(StoreContext)
+
+  const token = localStorage.getItem("token");
 
   const {bookingSlots,slotIndex,slotTime,setSlotIndex,setSlotTime} = useBookingSlots()
 

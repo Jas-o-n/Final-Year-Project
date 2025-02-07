@@ -70,6 +70,19 @@ function useBookings(url) {
 const ListBookings = ({ url }) => {
   const { list, fetchList } = useBookings(url);
 
+  const handleStatusUpdate = async (bookingID, status) => {
+    const response = await axios.post(`${url}/api/booking/updateStatus`, { 
+      id: bookingID,
+      status: status 
+    });
+    if (response.data.success) {
+      toast.success(response.data.message);
+      fetchList();
+    } else {
+      toast.error("Error updating status");
+    }
+  };
+
   const handleRemoveBooking = async (bookingID) => {
     const response = await axios.post(`${url}/api/booking/remove`, { id: bookingID });
   if (response.data.success) {
@@ -96,7 +109,8 @@ const ListBookings = ({ url }) => {
           <b>User Email</b>
           <b>Date</b>
           <b>Time</b>
-          <b></b>
+          <b>Status</b>
+          <b>Actions</b>
         </div>
         {list.map((item, index) => {
           return (
@@ -104,7 +118,12 @@ const ListBookings = ({ url }) => {
               <p>{item.userEmail}</p>
               <p>{item.formattedDate}</p>
               <p>{item.time}</p>
-              <p onClick={() => handleRemoveBooking(item._id)} className='cursor'>X</p>
+              <p>{item.status}</p>
+              <div className="booking-actions">
+                <p onClick={() => handleStatusUpdate(item._id, 'approved')} className='cursor approve'>↑</p>
+                <p onClick={() => handleStatusUpdate(item._id, 'denied')} className='cursor deny'>↓</p>
+                <p onClick={() => handleRemoveBooking(item._id)} className='cursor remove'>X</p>
+              </div>
             </div>
           );
         })}
