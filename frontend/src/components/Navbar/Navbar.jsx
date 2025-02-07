@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
+import { CircleUser, LogOut } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
@@ -30,9 +31,12 @@ const Navbar = ({setShowLogin}) => {
       <div className="navbar-right">
         {!token?<button onClick={()=>setShowLogin(true)}>sign in / register</button>
         :<div className='navbar-profile'>
-           <img src={assets.profile_icon} alt="" />
+           <CircleUser size={40} />
            <ul className="navbar-profile-dropdown">
-            <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+            <li onClick={logout}>
+              <LogOut />
+              <p>Logout</p>
+            </li>
            </ul>
           </div>}
       </div>

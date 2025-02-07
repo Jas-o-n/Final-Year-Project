@@ -85,6 +85,18 @@ const listUser = async (req,res) => {
     }
 }
 
+// get user by ID
+const getUsersByIDs = async (req, res) => {
+    try {
+        const { userIDs } = req.body; // Expecting an array of user IDs
+        const users = await userModel.find({ _id: { $in: userIDs } });
+        res.json({ success: true, data: users });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+}
+
 // remove user
 const removeUser = async (req,res) => {
     try {
@@ -121,4 +133,4 @@ const downgradeUserPriv = async (req,res) => {
     }
 }
 
-export {loginUser,registerUser,listUser,removeUser,upgradeUserPriv,downgradeUserPriv}
+export {loginUser,registerUser,listUser,getUsersByIDs,removeUser,upgradeUserPriv,downgradeUserPriv}

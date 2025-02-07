@@ -1,23 +1,27 @@
 import React from 'react'
 import "./Sidebar.css"
-import { assets } from '../../assets/assets'
 import { NavLink } from 'react-router-dom'
+import { AlignLeft, CalendarSearch, Contact, ListPlus } from 'lucide-react'
 
 const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className="sidebar-options">
         <NavLink to='/AddProducts' className="sidebar-option">
-            <img src={assets.add_icon} alt="" />
+            <ListPlus />
             <p>Add Items</p>
         </NavLink>
         <NavLink to='/ListProducts' className="sidebar-option">
-            <img src={assets.list_icon} alt="" />
+            <AlignLeft />
             <p>List Items</p>
         </NavLink>
         <NavLink to='/ListUsers' className="sidebar-option">
-            <img src={assets.list_icon} alt="" />
+            <Contact />
             <p>List Users</p>
+        </NavLink>
+        <NavLink to='/ListBookings' className="sidebar-option">
+            <CalendarSearch />
+            <p>List Bookings</p>
         </NavLink>
       </div>
     </div>

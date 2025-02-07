@@ -2,17 +2,17 @@ import bookingModel from "../models/bookingModel.js"
 
 // add booking
 const addBooking = async (req,res) => {
-    const booking = new bookingModel({
-        userID:req.body.userID,
-        date:req.body.date,
-        time:req.body.time
-    })
     try {
+        const booking = new bookingModel({
+            userID: req.body.userID,
+            date: new Date(req.body.date),
+            time: req.body.time
+        });
         await booking.save();
-        res.json({success:true,message:"Booking Added"})
+        res.json({success: true, message: "Booking Added"});
     } catch (error) {
-        console.log(error)
-        res.json({success:false,message:"Error"})
+        console.log(error);
+        res.json({success: false, message: "Error"});
     }
 }
 

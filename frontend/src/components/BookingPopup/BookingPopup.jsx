@@ -1,12 +1,12 @@
 import './BookingPopup.css'
-import { assets } from '../../assets/assets'
+import { CircleX } from 'lucide-react'
 import { getUserID } from '../../utils/authUtils';
 import { StoreContext } from '../../context/StoreContext';
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-function useBookings() {
+function useBookingSlots() {
   const [bookingSlots,setBookingSlots] = useState([])
   const [slotIndex,setSlotIndex] = useState(0)
   const [slotTime,setSlotTime] = useState(0)
@@ -20,10 +20,6 @@ function useBookings() {
       // set current date
       let currentDate = new Date(today)
       currentDate.setDate(today.getDate() + i)
-      // set end time
-      let endTime = new Date()
-      endTime.setDate(today.getDate() + i)
-      endTime.setHours(21,0,0,0)
       // set hours
       if (today.getDate() === currentDate.getDate()) {
         if (currentDate.getHours() >= 10) {
@@ -41,9 +37,13 @@ function useBookings() {
         currentDate.setHours(10);
         currentDate.setMinutes(0);
       }
-
+      
       let timeSlots = []
-
+      // set end time
+      let endTime = new Date()
+      endTime.setDate(today.getDate() + i)
+      endTime.setHours(21,0,0,0)
+      
       while(currentDate < endTime) {
         let formattedTime = currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
 
@@ -58,8 +58,12 @@ function useBookings() {
       setBookingSlots(prev => ([...prev, timeSlots]))
     }
   }
+
+  useEffect(()=>{
+    getAvailableSlots()
+  },[])
   
-  return {bookingSlots,setBookingSlots,getAvailableSlots,slotIndex,setSlotIndex,slotTime,setSlotTime}
+  return {bookingSlots,slotIndex,setSlotIndex,slotTime,setSlotTime}
 }
 
 const BookingPopup = ({setShowBooking}) => {
@@ -67,32 +71,28 @@ const BookingPopup = ({setShowBooking}) => {
   const daysOfWeek = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
   const {token,url} = useContext(StoreContext)
 
-  const {bookingSlots,slotIndex,slotTime,getAvailableSlots,setSlotIndex,setSlotTime} = useBookings()
-
-  useEffect(()=>{
-    getAvailableSlots()
-  },[])
+  const {bookingSlots,slotIndex,slotTime,setSlotIndex,setSlotTime} = useBookingSlots()
 
   const onBooking = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    const selectedDate = formData.get('selectedDate');
+    const selectedDate = new Date(formData.get('selectedDate'));
     const selectedTime = formData.get('selectedTime');
     const userID = formData.get('userID');
 
     const data = {
-      userID: userID,
-      date: selectedDate,
-      time: selectedTime
+        userID: userID,
+        date: selectedDate.toISOString(),
+        time: selectedTime
     };
 
-    const response = await axios.post(`${url}/api/booking/add`,data);
+    const response = await axios.post(`${url}/api/booking/add`, data);
     if (response.data.success) {
-      toast.success(response.data.message);
-      setShowBooking(false)
+        toast.success(response.data.message);
+        setShowBooking(false);
     } else {
-      toast.error(response.data.message);
+        toast.error(response.data.message);
     }
   }
 
@@ -106,13 +106,17 @@ const BookingPopup = ({setShowBooking}) => {
     ?<div className="booking-popup-container">
       <div className="booking-popup-title">
             <h2>Please log in to book an appointment!</h2>
-            <img onClick={()=>setShowBooking(false)} src={assets.cross_icon} alt="" />
+            <span onClick={()=>setShowBooking(false)} className='booking-popup-title-icon'>
+              <CircleX color='red' size={24} />
+            </span>
         </div>
     </div>  
       :<form onSubmit={onBooking} className="booking-popup-container">
         <div className="booking-popup-title">
             <h2>Book an Appointment</h2>
-            <img onClick={()=>setShowBooking(false)} src={assets.cross_icon} alt="" />
+            <span onClick={()=>setShowBooking(false)} className='booking-popup-title-icon'>
+              <CircleX color='red' size={24} />
+            </span>
         </div>
         
         <div className='booking-popup-slots-container-days'>

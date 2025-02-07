@@ -3,7 +3,8 @@ TODO:
 -[x] Booking Appointments
     -[x] Frontend ie UI + logic for form submitting 
     -[x] Backend ie storing form data in database
-    -[] Ability for users/admins to view the bookings
+    -[x] Ability for admins to view the bookings
+    -[] Ability for users to view the bookings
 
 -[] View product details
 -[] Quotes

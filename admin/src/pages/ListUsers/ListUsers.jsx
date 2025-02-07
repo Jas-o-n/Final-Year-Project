@@ -60,7 +60,7 @@ const ListUsers = ({url}) => {
           <b>Admin Privileges</b>
           <b>Upgrade</b>
           <b>Downgrade</b>
-          <b>Remove</b>
+          <b></b>
         </div>
         {list.map((item,index)=>{
           return (

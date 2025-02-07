@@ -37,7 +37,7 @@ const ListProducts = ({url}) => {
         <div className="list-products-table-format title">
           <b>Name</b>
           <b>Category</b>
-          <b>Action</b>
+          <b></b>
         </div>
         {list.map((item,index)=>{
           return (

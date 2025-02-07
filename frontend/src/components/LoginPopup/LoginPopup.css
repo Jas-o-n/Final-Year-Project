@@ -28,8 +28,7 @@
     color: black;
 }
 
-.login-popup-title img{
-    width: 16px;
+.login-popup-title-icon {
     cursor: pointer;
 }
 

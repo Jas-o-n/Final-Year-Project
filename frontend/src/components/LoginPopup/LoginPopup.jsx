@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './LoginPopup.css'
-import { assets } from '../../assets/assets'
+import { CircleX } from 'lucide-react'
 import { StoreContext } from '../../context/StoreContext'
 import axios from "axios"
 
@@ -55,7 +55,10 @@ const LoginPopup = ({setShowLogin}) => {
       <form onSubmit={onLogin} className="login-popup-container">
         <div className="login-popup-title">
             <h2>{currState}</h2>
-            <img onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt="" />
+            <img onClick={()=>setShowLogin(false)} alt="" />
+            <span onClick={()=>setShowLogin(false)} className='login-popup-title-icon'>
+              <CircleX color='red' size={24} />
+            </span>
         </div>
         <div className="login-popup-inputs">
             {currState==="Login"?<></>:<input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your Name' required />}
