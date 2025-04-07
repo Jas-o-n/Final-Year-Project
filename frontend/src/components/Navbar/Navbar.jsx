@@ -29,14 +29,14 @@ const Navbar = ({setShowLogin}) => {
       <img src={assets.logo} alt="" className="logo" onClick={() => { navigate('/'); setMenu("home"); }} style={{cursor: 'pointer'}} />
       {(location.pathname == '/bookings') ? ( 
         <ul className="navbar-menu">
-          <Link to='/' onClick={()=>setMenu("home")} >home</Link>
+          <Link to='/' onClick={()=>setMenu("home")} >Home</Link>
         </ul>
       ) : (
         <ul className="navbar-menu">
-          <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</Link>
-          <a href='#product-display' onClick={()=>setMenu("products")} className={menu==="products"?"active":""}>products</a>
-          <a href='#book-appointment' onClick={()=>setMenu("book-appointment")} className={menu==="book-appointment"?"active":""}>book appointment</a>
-          <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</a>
+          <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>Home</Link>
+          <a href='#product-display' onClick={()=>setMenu("products")} className={menu==="products"?"active":""}>Products</a>
+          <a href='#book-appointment' onClick={()=>setMenu("book-appointment")} className={menu==="book-appointment"?"active":""}>Book an Appointment</a>
+          <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>Contact Us</a>
         </ul>
       )}
       <div className="navbar-right">

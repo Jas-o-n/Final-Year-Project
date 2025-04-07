@@ -13,8 +13,8 @@ function useBookingSlots() {
 
   const getAvailableSlots = async () => {
     if (bookingSlots.length > 0) return;
-    // get current date
     let today = new Date()
+    let slots = []
 
     for(let i=0 ; i<7 ; i++) {
       // set current date
@@ -54,9 +54,16 @@ function useBookingSlots() {
 
         currentDate.setMinutes(currentDate.getMinutes() + 30)
       }
-
-      setBookingSlots(prev => ([...prev, timeSlots]))
+      slots.push(timeSlots)
     }
+
+    // Find first day with available slots
+    const firstAvailableDay = slots.findIndex(daySlots => daySlots.length > 0)
+    if (firstAvailableDay !== -1) {
+      setSlotIndex(firstAvailableDay)
+    }
+    
+    setBookingSlots(slots)
   }
 
   useEffect(()=>{
@@ -135,7 +142,7 @@ const BookingPopup = ({setShowBooking}) => {
               {item.time.toLowerCase()}
             </p>
           ))}
-        </div>{bookingSlots.length > 0 && (
+        </div>{bookingSlots.length > 0 && bookingSlots[slotIndex] && bookingSlots[slotIndex][0] && (
           <>
             <input type="hidden" name="selectedDate" value={formatDate(bookingSlots[slotIndex][0].datetime)} />
             <input type="hidden" name="selectedTime" value={bookingSlots[slotIndex][slotTime].time} />
