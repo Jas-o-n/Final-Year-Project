@@ -5,8 +5,8 @@ import { category_list } from '../../assets/assets'
 const ExploreProducts = ({category,setCategory}) => {
   return (
     <div className='explore-category' id='explore-category'>
-      <h1>Explore our products</h1>
-      <p className='explore-category-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a ipsa repudiandae similique ratione blanditiis temporibus eius, deleniti odit explicabo maiores eveniet est tenetur esse repellat quisquam aut. Fuga, nihil.</p>
+      <h1>Insurance Solutions</h1>
+      <p className='explore-category-text'>Browse our range of insurance products designed to protect you, your family, and your business. Select a category below to find the right coverage for your needs.</p>
       <div className="explore-category-list">
         {category_list.map((item,index)=>{
             return (
