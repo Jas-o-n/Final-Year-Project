@@ -6,6 +6,7 @@ import AddProducts from './pages/AddProducts/AddProducts'
 import ListProducts from './pages/ListProducts/ListProducts'
 import ListUsers from './pages/ListUsers/ListUsers'
 import ListBookings from './pages/ListBookings/ListBookings'
+import ListQuotes from './pages/ListQuotes/ListQuotes'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/ListProducts" element={<ListProducts url={url}/>}/>
           <Route path="/ListUsers" element={<ListUsers url={url}/>}/>
           <Route path="/ListBookings" element={<ListBookings url={url}/>}/>
+          <Route path="/ListQuotes" element={<ListQuotes url={url}/>}/>
         </Routes>
       </div>
     </div>

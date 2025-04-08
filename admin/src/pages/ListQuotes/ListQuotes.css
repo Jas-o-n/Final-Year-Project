@@ -1,0 +1,97 @@
+.list-quotes-table-format {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1.2fr 1fr 0.8fr 0.2fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid hsl(0, 0%, 79%);
+    font-size: 13px;
+}
+
+.list-quotes-table-format.title {
+    background-color: #f9f9f9;
+}
+
+.quote-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.remove:hover {
+    color: #f44336;
+    cursor: pointer;
+}
+
+.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.clickable:hover {
+    background-color: #f5f5f5;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #f44336;
+}
+
+.modal-section {
+    margin-bottom: 20px;
+}
+
+.modal-section h3 {
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-field {
+    display: flex;
+    margin: 8px 0;
+    padding: 4px 0;
+}
+
+.field-label {
+    font-weight: 600;
+    min-width: 150px;
+    color: #666;
+}
+
+.field-value {
+    flex: 1;
+}

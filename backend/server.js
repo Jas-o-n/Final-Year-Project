@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js"
 import productRouter from "./routes/productRoute.js"
 import userRouter from "./routes/userRoute.js"
 import bookingRouter from "./routes/bookingRoute.js"
+import quoteRouter from "./routes/quoteRoute.js"
 import 'dotenv/config'
 
 
@@ -38,6 +39,7 @@ connectDB();
 app.use("/api/product",productRouter)
 app.use("/api/user",userRouter)
 app.use("/api/booking",bookingRouter)
+app.use("/api/quote",quoteRouter)
 
 app.get("/",(req,res)=>{
     res.send("API Working")

@@ -3,6 +3,7 @@ import './LoginPopup.css'
 import { CircleX } from 'lucide-react'
 import { StoreContext } from '../../context/StoreContext'
 import axios from "axios"
+import useClickOutside from '../../hooks/useClickOutside'
 
 const LoginPopup = ({setShowLogin}) => {
 
@@ -49,10 +50,14 @@ const LoginPopup = ({setShowLogin}) => {
         alert(response.data.message)
       }
     }
+
+    const popupRef = useClickOutside(() => {
+        setShowLogin(false)
+    })
     
   return (
     <div className='login-popup'>
-      <form onSubmit={onLogin} className="login-popup-container">
+      <form onSubmit={onLogin} className="login-popup-container" ref={popupRef}>
         <div className="login-popup-title">
             <h2>{currState}</h2>
             <img onClick={()=>setShowLogin(false)} alt="" />

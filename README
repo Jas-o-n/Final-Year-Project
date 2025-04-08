@@ -6,11 +6,16 @@ TODO:
     -[x] Ability for admins to view bookings
     -[x] Ability for users to view their bookings
 
--[] View product details
--[] Quotes
+-[x] Quotes
+    -[x] Frontend
+    -[x] Form Submitting
+    -[x] Backend
+-[] Add the rest of the avialable insurance plans
+-[] View insurance providers (@available insurance plans)
 
 
 Less important TODO:
 
 -[x] scroll lock on booking and login popups
--[] change the booking popup UI
+-[x] being able to close the popups by clicling outside of them
+-[x] scrolling issue on the categories

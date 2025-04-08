@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Sidebar.css"
 import { NavLink } from 'react-router-dom'
-import { AlignLeft, CalendarSearch, Contact, ListPlus } from 'lucide-react'
+import { AlignLeft, CalendarSearch, Contact, ListPlus, FileText } from 'lucide-react'
 
 const Sidebar = () => {
   return (
@@ -22,6 +22,10 @@ const Sidebar = () => {
         <NavLink to='/ListBookings' className="sidebar-option">
             <CalendarSearch />
             <p>List Bookings</p>
+        </NavLink>
+        <NavLink to='/ListQuotes' className="sidebar-option">
+            <FileText />
+            <p>List Quotes</p>
         </NavLink>
       </div>
     </div>

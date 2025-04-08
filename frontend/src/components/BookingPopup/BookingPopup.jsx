@@ -5,6 +5,7 @@ import { StoreContext } from '../../context/StoreContext';
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import useClickOutside from '../../hooks/useClickOutside'
 
 function useBookingSlots() {
   const [bookingSlots,setBookingSlots] = useState([])
@@ -82,10 +83,13 @@ const BookingPopup = ({setShowBooking}) => {
 
   const {bookingSlots,slotIndex,slotTime,setSlotIndex,setSlotTime} = useBookingSlots()
 
+  const popupRef = useClickOutside(() => {
+    setShowBooking(false)
+  })
+
   const onBooking = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     const selectedDate = new Date(formData.get('selectedDate'));
     const selectedTime = formData.get('selectedTime');
     const userID = formData.get('userID');
@@ -96,13 +100,18 @@ const BookingPopup = ({setShowBooking}) => {
         time: selectedTime
     };
 
-    const response = await axios.post(`${url}/api/booking/add`, data);
-    if (response.data.success) {
+    try{
+      const response = await axios.post(`${url}/api/booking/add`, data);
+      if (response.data.success) {
         toast.success(response.data.message);
         setShowBooking(false);
-    } else {
+      } else {
         toast.error(response.data.message);
+      }
+    } catch (error) {
+        toast.error("Failed to submit booking request");
     }
+    
   }
 
   const formatDate = (date) => {
@@ -120,7 +129,7 @@ const BookingPopup = ({setShowBooking}) => {
             </span>
         </div>
     </div>  
-      :<form onSubmit={onBooking} className="booking-popup-container">
+      :<form onSubmit={onBooking} className="booking-popup-container" ref={popupRef}>
         <div className="booking-popup-title">
             <h2>Book an Appointment</h2>
             <span onClick={()=>setShowBooking(false)} className='booking-popup-title-icon'>
