@@ -5,17 +5,16 @@ TODO:
     -[x] Backend ie storing form data in database
     -[x] Ability for admins to view bookings
     -[x] Ability for users to view their bookings
-
 -[x] Quotes
     -[x] Frontend
     -[x] Form Submitting
     -[x] Backend
--[] Add the rest of the avialable insurance plans
--[] View insurance providers (@available insurance plans)
+-[x] View insurance providers (@available insurance plans)
 
 
 Less important TODO:
 
--[x] scroll lock on booking and login popups
--[x] being able to close the popups by clicling outside of them
--[x] scrolling issue on the categories
+-[x] Scroll lock on booking and login popups
+-[x] Being able to close the popups by clicling outside of them
+-[x] Scrolling issue on the categories
+-[x] Add the rest of the available insurance plans

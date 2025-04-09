@@ -9,15 +9,22 @@ const StoreContextProvider = (props) => {
     const adminUrl = import.meta.env.VITE_ADMIN_URL
     const [token,setToken] = useState("")
     const [product_list,setProductList] = useState([])
+    const [providers, setProviders] = useState([])
 
     const fetchProductList = async () => {
         const response = await axios.get(url+"/api/product/list")
         setProductList(response.data.data)
     }
 
+    const fetchProviders = async () => {
+        const response = await axios.get(url+"/api/provider/list")
+        setProviders(response.data.data)
+    }
+
     useEffect(() =>{
         async function loadData() {
             await fetchProductList()
+            await fetchProviders()
             if (localStorage.getItem("token")) {
                 setToken(localStorage.getItem("token"))
             }
@@ -27,6 +34,7 @@ const StoreContextProvider = (props) => {
 
     const contextValue = {
         product_list,
+        providers,
         url,
         token,
         setToken,

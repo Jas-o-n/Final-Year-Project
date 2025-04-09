@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Footer.css'
 import { assets } from '../../assets/assets'
 
-const Footer = () => {
+const Footer = ({ setMenu }) => {
+  const navigate = useNavigate()
+
   return (
     <div className='footer' id='footer'>
       <div className="footer-content">
@@ -13,7 +16,11 @@ const Footer = () => {
         <div className="footer-content-center">
           <h2>COMPANY</h2>
           <ul>
-            <li>Home</li>
+            <li onClick={() => {
+              navigate('/');
+              window.scrollTo(0, 0);
+              setMenu("home");
+            }} style={{cursor: 'pointer'}}>Home</li>
             <li>About us</li>
             <li>Privacy policy</li>
           </ul>

@@ -6,6 +6,7 @@ import productRouter from "./routes/productRoute.js"
 import userRouter from "./routes/userRoute.js"
 import bookingRouter from "./routes/bookingRoute.js"
 import quoteRouter from "./routes/quoteRoute.js"
+import providerRouter from "./routes/providerRoute.js"
 import 'dotenv/config'
 
 
@@ -40,6 +41,7 @@ app.use("/api/product",productRouter)
 app.use("/api/user",userRouter)
 app.use("/api/booking",bookingRouter)
 app.use("/api/quote",quoteRouter)
+app.use("/api/provider",providerRouter)
 
 app.get("/",(req,res)=>{
     res.send("API Working")

@@ -28,3 +28,12 @@
     font-size: 20px;
     font-weight: 500;
 }
+
+.product-category {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #3987c9;
+    font-style: italic;
+}

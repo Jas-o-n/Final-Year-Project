@@ -15,6 +15,14 @@ const Sidebar = () => {
             <AlignLeft />
             <p>List Items</p>
         </NavLink>
+        <NavLink to='/AddProviders' className="sidebar-option">
+            <ListPlus />
+            <p>Add Providers</p>
+        </NavLink>
+        <NavLink to='/ListProviders' className="sidebar-option">
+            <AlignLeft />
+            <p>List Providers</p>
+        </NavLink>
         <NavLink to='/ListUsers' className="sidebar-option">
             <Contact />
             <p>List Users</p>
@@ -27,6 +35,7 @@ const Sidebar = () => {
             <FileText />
             <p>List Quotes</p>
         </NavLink>
+        
       </div>
     </div>
   )

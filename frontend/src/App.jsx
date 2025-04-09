@@ -12,6 +12,7 @@ const App = () => {
 
   const [showLogin,setShowLogin] = useState(false)
   const [showBooking,setShowBooking] = useState(false)
+  const [menu,setMenu] = useState("home")
 
   useEffect(() => {
     if (showBooking || showLogin) {
@@ -30,13 +31,13 @@ const App = () => {
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
     {showBooking?<BookingPopup setShowBooking={setShowBooking} />:<></>}
       <div className='app'>
-        <Navbar setShowLogin={setShowLogin} />
+        <Navbar setShowLogin={setShowLogin} menu={menu} setMenu={setMenu} />
         <Routes>
           < Route path='/' element={<Home setShowBooking={setShowBooking} />} />
           < Route path='/bookings' element={<Bookings />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer setMenu={setMenu} />
     </>
   )
 }

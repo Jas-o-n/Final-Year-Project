@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
-import './AddProducts.css'
+import './AddProviders.css'
 import axios from "axios"
 import { toast } from 'react-toastify';
 
-const AddProducts = ({url}) => {
-
+const AddProviders = ({url}) => {
     const [data,setData] = useState({
-      name:"",
-      category:"Vehicle",
+      name: "",
+      website: "",
+      email: "",
+      phone: "",
+      location: "",
+      specialty: "",
+      category: "Vehicle"
     })
 
     const onChangeHandler = (event) => {
@@ -18,16 +22,16 @@ const AddProducts = ({url}) => {
 
     const onSubmitHandler = async (event) => {
       event.preventDefault();
-      const formData = new FormData();
-      formData.append("name",data.name);
-      formData.append("category",data.category);
-      const jsonData = {}
-      formData.forEach((value, key) => jsonData[key] = value);
-      const response = await axios.post(`${url}/api/product/add`,jsonData);
+      const response = await axios.post(`${url}/api/provider/add`, data);
       if (response.data.success) {
         setData({
-          name:"",
-          category:"Vehicle",
+          name: "",
+          website: "",
+          email: "",
+          phone: "",
+          location: "",
+          specialty: "",
+          category: "Vehicle"
         })
         toast.success(response.data.message);
       } else {
@@ -39,12 +43,20 @@ const AddProducts = ({url}) => {
     <div>
       <div className="add">
         <form className='flex-col' onSubmit={onSubmitHandler}>
-          <div className="add-product-name flex-col">
-            <p>Product name</p>
-            <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'/>
-          </div>
-          <div className="add-product-category flex-col">
-            <p>Product Category</p>
+          {['name', 'website', 'email', 'phone', 'location', 'specialty'].map((field) => (
+            <div key={field} className="add-provider-field flex-col">
+              <p>{field.charAt(0).toUpperCase() + field.slice(1)}</p>
+              <input 
+                onChange={onChangeHandler} 
+                value={data[field]} 
+                type="text" 
+                name={field} 
+                placeholder='Type here'
+              />
+            </div>
+          ))}
+          <div className="add-provider-category flex-col">
+            <p>Category</p>
             <select onChange={onChangeHandler} value={data.category} name="category">
               <option value="Vehicle">Vehicle</option>
               <option value="Income/Life">Income/Life</option>
@@ -57,11 +69,11 @@ const AddProducts = ({url}) => {
               <option value="Sport">Sport</option>
             </select>
           </div>
-          <button type='submit' className='add-button'>Add</button>
+          <button type='submit' className='add-button'>Add Provider</button>
         </form>
       </div>
     </div>
   )
 }
 
-export default AddProducts
+export default AddProviders
