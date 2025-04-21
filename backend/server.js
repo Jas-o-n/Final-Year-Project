@@ -27,7 +27,9 @@ const allowedOrigins = [
 ]
 
 app.use(cors({
-    origin: allowedOrigins
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // specify allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // specify allowed headers
 }));
 
 app.use(express.json());
