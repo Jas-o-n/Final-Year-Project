@@ -24,12 +24,11 @@ const allowedOrigins = [
     "http://localhost:5174", // dev frontend
     "https://ibmsadminfyp.netlify.app", // admin frontend
     "https://ibmsfyp.netlify.app", // frontend
+    "https://final-year-project-production-75e5.up.railway.app", // production backend
 ]
 
 app.use(cors({
     origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // specify allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'] // specify allowed headers
 }));
 
 app.use(express.json());
