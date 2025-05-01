@@ -1,20 +1,2 @@
-TODO:
-
--[x] Booking Appointments
-    -[x] Frontend ie UI + logic for form submitting 
-    -[x] Backend ie storing form data in database
-    -[x] Ability for admins to view bookings
-    -[x] Ability for users to view their bookings
--[x] Quotes
-    -[x] Frontend
-    -[x] Form Submitting
-    -[x] Backend
--[x] View insurance providers (@available insurance plans)
-
-
-Less important TODO:
-
--[x] Scroll lock on booking and login popups
--[x] Being able to close the popups by clicling outside of them
--[x] Scrolling issue on the categories
--[x] Add the rest of the available insurance plans
+Insurance Brokerage and Management System (IBMS)
+The Insurance Brokerage and Management System (IBMS) is a full-stack web application designed to streamline the process of browsing, quoting, and managing insurance products for both customers and administrators. Built using React, Node.js, and MongoDB, the system supports user registration and authentication, product browsing, quote requests, appointment bookings, and admin-level management of products and user submissions. This project demonstrates a secure, scalable, and modular architecture following industry best practices.
