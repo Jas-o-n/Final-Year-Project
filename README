@@ -1,2 +1,5 @@
 Insurance Brokerage and Management System (IBMS)
 The Insurance Brokerage and Management System (IBMS) is a full-stack web application designed to streamline the process of browsing, quoting, and managing insurance products for both customers and administrators. Built using React, Node.js, and MongoDB, the system supports user registration and authentication, product browsing, quote requests, appointment bookings, and admin-level management of products and user submissions. This project demonstrates a secure, scalable, and modular architecture following industry best practices.
+
+Brief demonstration of the project:
+https://youtu.be/r7wbhpHrTGk
